@@ -2,7 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const muteButton = document.getElementById('mute-button');
     const audioElement = document.getElementById('background-music');
-
+    document.addEventListener('click', () => {
+        audioElement.play().catch(error => {
+            console.log('Audio playback was prevented:', error);
+        });
+    });
     muteButton.addEventListener('click', () => {
         if (audioElement.muted) {
             audioElement.muted = false;
