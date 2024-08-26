@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blow the Candle</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+        }
+
+        #candle {
+            width: 100px;
+            height: 200px;
+            background-color: #FFD700;
+            position: relative;
+            border-radius: 10px;
+        }
+
+        #flame {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 60px;
+            background-color: orange;
+            border-radius: 50%;
+            animation: flicker 0.1s infinite;
+        }
+
+        @keyframes flicker {
+
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+            }
+
+            50% {
+                transform: translateX(-50%) scale(0.9);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="candle">
+        <div id="flame"></div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
