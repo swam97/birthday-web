@@ -8,11 +8,20 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             background-color: #000;
+        }
+
+        #wish {
+
+            background-color: white;
+            border-radius: 10px;
+            display: block;
+            margin-top: 10px;
         }
 
         #candle {
@@ -21,6 +30,8 @@
             background-color: #FFD700;
             position: relative;
             border-radius: 10px;
+
+            margin-bottom: 10px;
         }
 
         #flame {
@@ -53,6 +64,10 @@
     <div id="candle">
         <div id="flame"></div>
     </div>
+
+    <h2 id="wish">Happy Birthday Kaycee!</h2>
+
+
     <script src="js/script.js"></script>
 </body>
 

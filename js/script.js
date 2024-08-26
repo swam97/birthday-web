@@ -22,7 +22,7 @@ window.onload = function () {
                     const values = dataArray.reduce((a, b) => a + b, 0);
                     const average = values / dataArray.length;
 
-                    if (average > 20) {  // Adjust this threshold based on testing
+                    if (average > 40) {  // Adjust this threshold based on testing
                         flame.style.display = 'none';  // "Blow out" the candle
                     }
 
