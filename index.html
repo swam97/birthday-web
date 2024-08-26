@@ -16,6 +16,46 @@
             background-color: #000;
         }
 
+        #cake {
+            width: 200px;
+            height: 100px;
+            background-color: #f4a460;
+            /* Light brown color for the cake */
+            position: relative;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            /* Add some shadow for depth */
+        }
+
+        #cake::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            /* Positioning the icing */
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to right, #ff69b4 10%, transparent 10%, transparent 90%, #ff69b4 90%);
+            /* Icing effect */
+            border-radius: 10px 10px 0 0;
+        }
+
+        #cake::after {
+            content: '';
+            position: absolute;
+            top: 80px;
+            /* Positioning the base of the cake */
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: #f4a460;
+            /* Match the cake color */
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Slight shadow */
+        }
+
         #wish {
 
             background-color: white;
@@ -25,22 +65,25 @@
         }
 
         #candle {
-            width: 100px;
-            height: 200px;
+            width: 30px;
+            height: 60px;
             background-color: #FFD700;
-            position: relative;
+            position: absolute;
+            top: -60px;
+            /* Position the candle on top of the cake */
+            left: 50%;
+            transform: translateX(-50%);
             border-radius: 10px;
-
-            margin-bottom: 10px;
         }
 
         #flame {
             position: absolute;
-            top: -40px;
+            top: -30px;
+            /* Adjust flame position */
             left: 50%;
             transform: translateX(-50%);
-            width: 30px;
-            height: 60px;
+            width: 15px;
+            height: 30px;
             background-color: orange;
             border-radius: 50%;
             animation: flicker 0.1s infinite;
@@ -57,18 +100,96 @@
                 transform: translateX(-50%) scale(0.9);
             }
         }
+
+        #sprinkles {
+            position: absolute;
+            top: 10px;
+            /* Positioning sprinkles on the cake */
+            left: 0;
+            width: 100%;
+            height: 10px;
+            pointer-events: none;
+            /* Ensure sprinkles don't interfere with clicking */
+        }
+
+        .sprinkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #ff6347;
+            /* Tomato red color for sprinkles */
+            border-radius: 50%;
+        }
+
+        #sprinkle1 {
+            top: 15px;
+            left: 20px;
+        }
+
+        #sprinkle2 {
+            top: 25px;
+            left: 60px;
+        }
+
+        #sprinkle3 {
+            top: 10px;
+            left: 140px;
+        }
+
+        #sprinkle4 {
+            top: 25px;
+            left: 100px;
+        }
+
+        #sprinkle5 {
+            top: 15px;
+            right: 15px;
+        }
+
+        audio {
+            display: none;
+        }
+
+        /* Mute button style */
+        #mute-button {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #fff;
+            border: 2px solid #000;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
     </style>
 </head>
 
 <body>
-    <div id="candle">
-        <div id="flame"></div>
+    <div id="mute-button">Mute</div>
+    <div id="cake">
+        <div id="candle">
+            <div id="flame"></div>
+        </div>
+        <div id="sprinkles">
+            <div id="sprinkle1" class="sprinkle"></div>
+            <div id="sprinkle2" class="sprinkle"></div>
+            <div id="sprinkle3" class="sprinkle"></div>
+            <div id="sprinkle4" class="sprinkle"></div>
+            <div id="sprinkle5" class="sprinkle"></div>
+        </div>
     </div>
 
     <h2 id="wish">Happy Birthday Kaycee!</h2>
-
+    <audio autoplay loop>
+        <source src="assets/birthday.weba" type="audio/webm">
+        Your browser does not support the audio element.
+    </audio>
 
     <script src="js/script.js"></script>
+    <script src="js/birthday.js"></script>
+
+
 </body>
 
 </html>
