@@ -10,6 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('backButton')?.addEventListener('click', function () {
-        window.location.href = 'greeting.html'; // Replace with your first page URL
+        window.location.href = 'index.html'; // Replace with your first page URL
     });
 });
