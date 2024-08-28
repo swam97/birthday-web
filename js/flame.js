@@ -2,9 +2,7 @@ window.onload = function () {
 
     const flame = document.getElementById('flame');
     const audioElement = document.getElementById('background-music');
-    audioElement.play().catch(error => {
-        console.log('Audio playback was prevented:', error);
-    });
+
     // Check if the browser supports the getUserMedia API
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ audio: true })
@@ -26,7 +24,7 @@ window.onload = function () {
                     const values = dataArray.reduce((a, b) => a + b, 0);
                     const average = values / dataArray.length;
 
-                    if (average > 90) {  // Adjust this threshold based on testing
+                    if (average > 50) {  // Adjust this threshold based on testing
                         flame.style.display = 'none';  // "Blow out" the candle
                         audioElement.muted = true;
                     }
@@ -46,3 +44,13 @@ window.onload = function () {
     }
 
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const audioElement = document.getElementById('background-music');
+    document.addEventListener('click', () => {
+        audioElement.play().catch(error => {
+            console.log('Audio playback was prevented:', error);
+        });
+    });
+});
