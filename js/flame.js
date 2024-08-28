@@ -1,48 +1,48 @@
 window.onload = function () {
-    document.addEventListener('DOMContentLoaded', () => {
-        const flame = document.getElementById('flame');
-        const audioElement = document.getElementById('background-music');
-        audioElement.play().catch(error => {
-            console.log('Audio playback was prevented:', error);
-        });
-        // Check if the browser supports the getUserMedia API
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ audio: true })
-                .then(function (stream) {
-                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                    const analyser = audioContext.createAnalyser();
-                    const microphone = audioContext.createMediaStreamSource(stream);
 
-                    analyser.smoothingTimeConstant = 0.8;
-                    analyser.fftSize = 1024;
+    const flame = document.getElementById('flame');
+    const audioElement = document.getElementById('background-music');
+    audioElement.play().catch(error => {
+        console.log('Audio playback was prevented:', error);
+    });
+    // Check if the browser supports the getUserMedia API
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(function (stream) {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const analyser = audioContext.createAnalyser();
+                const microphone = audioContext.createMediaStreamSource(stream);
 
-                    microphone.connect(analyser);
+                analyser.smoothingTimeConstant = 0.8;
+                analyser.fftSize = 1024;
 
-                    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+                microphone.connect(analyser);
 
-                    function checkSound() {
-                        analyser.getByteFrequencyData(dataArray);
+                const dataArray = new Uint8Array(analyser.frequencyBinCount);
 
-                        const values = dataArray.reduce((a, b) => a + b, 0);
-                        const average = values / dataArray.length;
+                function checkSound() {
+                    analyser.getByteFrequencyData(dataArray);
 
-                        if (average > 50) {  // Adjust this threshold based on testing
-                            flame.style.display = 'none';  // "Blow out" the candle
-                            audioElement.muted = true;
-                        }
+                    const values = dataArray.reduce((a, b) => a + b, 0);
+                    const average = values / dataArray.length;
 
-                        requestAnimationFrame(checkSound);
+                    if (average > 90) {  // Adjust this threshold based on testing
+                        flame.style.display = 'none';  // "Blow out" the candle
+                        audioElement.muted = true;
                     }
 
-                    // Start checking sound levels
-                    checkSound();
+                    requestAnimationFrame(checkSound);
+                }
 
-                })
-                .catch(function (err) {
-                    console.error('The following gUM error occurred: ' + err);
-                });
-        } else {
-            console.log('getUserMedia not supported on your browser!');
-        }
-    });
+                // Start checking sound levels
+                checkSound();
+
+            })
+            .catch(function (err) {
+                console.error('The following gUM error occurred: ' + err);
+            });
+    } else {
+        console.log('getUserMedia not supported on your browser!');
+    }
+
 };
