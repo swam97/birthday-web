@@ -6,8 +6,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Navigate to the next page after the flip animation completes
         setTimeout(function () {
-            window.location.href = 'birthday.html'; // Replace with your second page URL
             audioElement.muted = false;
+            audioElement.play().catch(error => {
+                console.log('Audio playback was prevented:', error);
+            });
+            // document.addEventListener('click', () => {
+            //     audioElement.play().catch(error => {
+            //         console.log('Audio playback was prevented:', error);
+            //     });
+            // });
+            window.location.href = 'birthday.html'; // Replace with your second page URL
+
         }, 700); // Matches the CSS animation duration
     });
 
