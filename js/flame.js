@@ -45,10 +45,10 @@ window.onload = function () {
 
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
 
-    const audioElement = document.getElementById('background-music');
-    audioElement.play().catch(error => {
-        console.log('Audio playback was prevented:', error);
-    });
-});
+//     const audioElement = document.getElementById('background-music');
+//     audioElement.play().catch(error => {
+//         console.log('Audio playback was prevented:', error);
+//     });
+// });
