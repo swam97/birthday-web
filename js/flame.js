@@ -48,9 +48,7 @@ window.onload = function () {
 document.addEventListener('DOMContentLoaded', () => {
 
     const audioElement = document.getElementById('background-music');
-    document.addEventListener('click', () => {
-        audioElement.play().catch(error => {
-            console.log('Audio playback was prevented:', error);
-        });
+    audioElement.play().catch(error => {
+        console.log('Audio playback was prevented:', error);
     });
 });
