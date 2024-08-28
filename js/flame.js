@@ -2,7 +2,7 @@ window.onload = function () {
 
     const flame = document.getElementById('flame');
     const audioElement = document.getElementById('background-music');
-    audioElement.muted = false;
+
     // Check if the browser supports the getUserMedia API
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ audio: true })
@@ -45,10 +45,15 @@ window.onload = function () {
 
 };
 
-// document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
-//     const audioElement = document.getElementById('background-music');
-//     audioElement.play().catch(error => {
-//         console.log('Audio playback was prevented:', error);
-//     });
-// });
+    const audioElement = document.getElementById('background-music');
+    audioElement.play().catch(error => {
+        console.log('Audio playback was prevented:', error);
+    });
+    document.addEventListener('click', () => {
+        audioElement.play().catch(error => {
+            console.log('Audio playback was prevented:', error);
+        });
+    });
+});
