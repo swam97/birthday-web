@@ -1,6 +1,6 @@
 window.onload = function () {
     const flame = document.getElementById('flame');
-
+    const audioElement = document.getElementById('background-music');
     // Check if the browser supports the getUserMedia API
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ audio: true })
@@ -22,8 +22,9 @@ window.onload = function () {
                     const values = dataArray.reduce((a, b) => a + b, 0);
                     const average = values / dataArray.length;
 
-                    if (average > 40) {  // Adjust this threshold based on testing
+                    if (average > 100) {  // Adjust this threshold based on testing
                         flame.style.display = 'none';  // "Blow out" the candle
+                        audioElement.muted = true;
                     }
 
                     requestAnimationFrame(checkSound);

@@ -1,0 +1,64 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black;
+}
+
+.book {
+    width: 100%;
+    height: 100%;
+    perspective: 1500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 20px; */
+    /* Space between the page and the button */
+}
+
+.page {
+    width: 80%;
+    height: 90%;
+    max-width: 80%;
+    /* Maximum width to keep it proportionate on larger screens */
+    max-height: 90vh;
+    /* Ensure some space for the button */
+    background-color: black;
+    border: 2px solid #ddd;
+    position: relative;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.page::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+
+.page.flipped {
+    transform: rotateY(-180deg);
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
